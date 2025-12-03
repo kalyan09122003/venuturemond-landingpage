@@ -1,0 +1,87 @@
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
+import { ThemeProvider } from "@/components/ThemeProvider";
+
+// Pages
+import Index from "./pages/Index"; // Landing Page
+import Catalog from "./pages/Catalog"; // Public Service Catalog
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import Onboarding from "./pages/Onboarding";
+import NotFound from "./pages/NotFound";
+
+// Dashboard
+import { DashboardLayout } from "./components/layout/DashboardLayout";
+import Overview from "./pages/dashboard/Overview";
+import Orders from "./pages/dashboard/Orders";
+import OrderDetail from "./pages/dashboard/OrderDetail";
+import Invoices from "./pages/dashboard/Invoices";
+import Services from "./pages/dashboard/Services";
+import Team from "./pages/dashboard/Team";
+import Support from "./pages/dashboard/Support";
+import Settings from "./pages/dashboard/Settings";
+
+const queryClient = new QueryClient();
+
+// Simple mock protection
+const ProtectedRoute = () => {
+  const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+  const location = useLocation();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  return <Outlet />;
+};
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider defaultTheme="dark" storageKey="VentureMond-theme">
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<Index />} />
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            
+            {/* Logout Route: Clears auth and redirects */}
+            <Route path="/logout" element={() => {
+              localStorage.removeItem("isAuthenticated");
+              return <Navigate to="/login" replace />;
+            }} />
+
+            {/* Protected Routes */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/onboarding" element={<Onboarding />} />
+              <Route path="/dashboard" element={<DashboardLayout />}>
+                <Route index element={<Overview />} />
+                <Route path="orders" element={<Orders />} />
+                <Route path="orders/:orderId" element={<OrderDetail />} />
+                <Route path="invoices" element={<Invoices />} />
+                <Route path="services" element={<Services />} />
+                <Route path="team" element={<Team />} />
+                <Route path="support" element={<Support />} />
+                <Route path="settings" element={<Settings />} />
+              </Route>
+            </Route>
+
+            {/* 404 - Redirect to Landing */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
+  </QueryClientProvider>
+);
+
+export default App;
