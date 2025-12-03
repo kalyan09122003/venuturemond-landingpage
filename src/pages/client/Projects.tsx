@@ -91,13 +91,13 @@ export default function Projects() {
 
     return (
         <div className="space-y-6 animate-in fade-in duration-500">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight">Projects</h1>
                     <p className="text-muted-foreground">Manage your active projects and deliverables.</p>
                 </div>
                 <select
-                    className="border rounded-md p-2 bg-background"
+                    className="w-full sm:w-auto border rounded-md p-2 bg-background"
                     value={activeProjectId || ''}
                     onChange={(e) => setActiveProjectId(e.target.value)}
                 >
@@ -109,7 +109,7 @@ export default function Projects() {
 
             <ProjectShell project={activeProject}>
                 <Tabs defaultValue="tasks" className="w-full">
-                    <TabsList>
+                    <TabsList className="w-full justify-start overflow-x-auto">
                         <TabsTrigger value="tasks">Tasks</TabsTrigger>
                         <TabsTrigger value="files">Files</TabsTrigger>
                         <TabsTrigger value="deliverables">Deliverables</TabsTrigger>

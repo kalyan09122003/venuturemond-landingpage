@@ -46,16 +46,16 @@ export default function Catalog() {
         </Button>
       </header>
 
-      <main className="container mx-auto py-12 px-4">
+      <main className="container mx-auto py-12 px-4 md:px-6">
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">Service Catalog</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Choose the perfect plan to accelerate your business growth. 
+            Choose the perfect plan to accelerate your business growth.
             All plans include access to our client dashboard.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
           {services.map((service) => (
             <Card key={service.id} className={`flex flex-col ${service.popular ? 'border-primary shadow-glow-sm' : ''}`}>
               <CardHeader>
