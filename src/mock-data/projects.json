@@ -1,0 +1,76 @@
+[
+    {
+        "id": "proj-001",
+        "name": "Website Redesign",
+        "status": "active",
+        "progress": 65,
+        "startDate": "2024-11-01",
+        "dueDate": "2024-12-31",
+        "tasks": [
+            {
+                "id": "task-1",
+                "title": "Design Mockups",
+                "status": "done",
+                "assignee": "Alice"
+            },
+            {
+                "id": "task-2",
+                "title": "Frontend Implementation",
+                "status": "in-progress",
+                "assignee": "Bob"
+            },
+            {
+                "id": "task-3",
+                "title": "Backend API",
+                "status": "todo",
+                "assignee": "Charlie"
+            }
+        ],
+        "files": [
+            {
+                "id": "file-1",
+                "name": "requirements.pdf",
+                "size": "2.5MB",
+                "date": "2024-11-02"
+            },
+            {
+                "id": "file-2",
+                "name": "design_v1.fig",
+                "size": "15MB",
+                "date": "2024-11-10"
+            }
+        ],
+        "deliverables": [
+            {
+                "id": "del-1",
+                "name": "Homepage Design",
+                "status": "approved",
+                "date": "2024-11-15"
+            },
+            {
+                "id": "del-2",
+                "name": "About Page Design",
+                "status": "pending_approval",
+                "date": "2024-12-01"
+            }
+        ]
+    },
+    {
+        "id": "proj-002",
+        "name": "Mobile App MVP",
+        "status": "planning",
+        "progress": 10,
+        "startDate": "2024-12-15",
+        "dueDate": "2025-03-01",
+        "tasks": [
+            {
+                "id": "task-4",
+                "title": "Requirement Gathering",
+                "status": "in-progress",
+                "assignee": "Alice"
+            }
+        ],
+        "files": [],
+        "deliverables": []
+    }
+]

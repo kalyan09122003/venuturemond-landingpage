@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
+import { NotificationsDropdown } from "@/components/ui/NotificationsDropdown";
 
 interface TopBarProps {
   onMenuClick: () => void;
@@ -45,38 +46,9 @@ export function TopBar({ onMenuClick }: TopBarProps) {
         <div className="flex items-center gap-2">
           {/* Theme toggle */}
           <ThemeToggle />
-          
+
           {/* Notifications */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative">
-                <Bell size={20} />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-80 glass-strong">
-              <DropdownMenuLabel>Notifications</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="flex flex-col items-start gap-1 p-3">
-                <div className="flex items-center gap-2">
-                  <Badge variant="success">New</Badge>
-                  <span className="text-sm font-medium">Order Confirmed</span>
-                </div>
-                <span className="text-xs text-muted-foreground">
-                  Your order ORD-001 has been confirmed
-                </span>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="flex flex-col items-start gap-1 p-3">
-                <div className="flex items-center gap-2">
-                  <Badge variant="warning">Action</Badge>
-                  <span className="text-sm font-medium">Invoice Due</span>
-                </div>
-                <span className="text-xs text-muted-foreground">
-                  Invoice INV-003 is due in 3 days
-                </span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <NotificationsDropdown />
 
           {/* User menu */}
           <DropdownMenu>

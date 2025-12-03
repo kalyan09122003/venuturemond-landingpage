@@ -3,6 +3,7 @@ import { KPICard } from "@/components/dashboard/KPICard";
 import { OnboardingChecklist } from "@/components/dashboard/OnboardingChecklist";
 import { RecentOrders } from "@/components/dashboard/RecentOrders";
 import { RevenueChart } from "@/components/dashboard/RevenueChart";
+import { ActivityFeed } from "@/components/ui/ActivityFeed";
 import { fetchDashboardOverview, type DashboardOverview } from "@/lib/mock-data";
 import { DollarSign, CreditCard, Zap, CheckCircle2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -77,6 +78,7 @@ export default function Overview() {
             loading={loading}
             onAction={handleOnboardingAction}
           />
+          <ActivityFeed />
         </div>
       </div>
     </div>

@@ -1,0 +1,86 @@
+[
+    {
+        "id": "srv-001",
+        "name": "Web Development",
+        "description": "Full-stack web development services for your business.",
+        "plans": [
+            {
+                "id": "plan-web-basic",
+                "name": "Basic",
+                "price": 999,
+                "features": [
+                    "5 Pages",
+                    "Basic SEO",
+                    "Contact Form"
+                ]
+            },
+            {
+                "id": "plan-web-pro",
+                "name": "Pro",
+                "price": 2499,
+                "features": [
+                    "10 Pages",
+                    "Advanced SEO",
+                    "CMS Integration",
+                    "Blog"
+                ]
+            },
+            {
+                "id": "plan-web-enterprise",
+                "name": "Enterprise",
+                "price": 4999,
+                "features": [
+                    "Unlimited Pages",
+                    "Custom Functionality",
+                    "Priority Support",
+                    "E-commerce"
+                ]
+            }
+        ],
+        "addOns": [
+            {
+                "id": "addon-logo",
+                "name": "Logo Design",
+                "price": 200
+            },
+            {
+                "id": "addon-copy",
+                "name": "Copywriting",
+                "price": 500
+            }
+        ]
+    },
+    {
+        "id": "srv-002",
+        "name": "Digital Marketing",
+        "description": "Grow your audience with targeted marketing campaigns.",
+        "plans": [
+            {
+                "id": "plan-mkt-starter",
+                "name": "Starter",
+                "price": 500,
+                "features": [
+                    "Social Media Management",
+                    "Monthly Report"
+                ]
+            },
+            {
+                "id": "plan-mkt-growth",
+                "name": "Growth",
+                "price": 1200,
+                "features": [
+                    "Social Media + Ads",
+                    "Bi-weekly Report",
+                    "Content Creation"
+                ]
+            }
+        ],
+        "addOns": [
+            {
+                "id": "addon-video",
+                "name": "Video Ad Production",
+                "price": 800
+            }
+        ]
+    }
+]

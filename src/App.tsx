@@ -25,6 +25,18 @@ import Team from "./pages/dashboard/Team";
 import Support from "./pages/dashboard/Support";
 import Settings from "./pages/dashboard/Settings";
 
+// Client Pages (New)
+import ClientOrders from "./pages/client/Orders";
+import ClientInvoices from "./pages/client/Invoices";
+import ClientServices from "./pages/client/Services";
+import ClientCheckout from "./pages/client/Checkout";
+import ClientProjects from "./pages/client/Projects";
+import ClientTeam from "./pages/client/Team";
+import ClientSupport from "./pages/client/Support";
+import ClientAnalytics from "./pages/client/Analytics";
+import ClientSettings from "./pages/client/Settings";
+import ClientDemo from "./pages/client/Demo";
+
 const queryClient = new QueryClient();
 
 // Simple mock protection
@@ -41,7 +53,7 @@ const ProtectedRoute = () => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark" storageKey="VentureMond-theme">
+    <ThemeProvider defaultTheme="light" storageKey="VentureMond-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -53,7 +65,7 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
-            
+
             {/* Logout Route: Clears auth and redirects */}
             <Route path="/logout" element={() => {
               localStorage.removeItem("isAuthenticated");
@@ -72,6 +84,21 @@ const App = () => (
                 <Route path="team" element={<Team />} />
                 <Route path="support" element={<Support />} />
                 <Route path="settings" element={<Settings />} />
+              </Route>
+
+              {/* Client Routes (New) */}
+              <Route path="/client" element={<DashboardLayout />}>
+                <Route index element={<Navigate to="/client/orders" replace />} />
+                <Route path="orders" element={<ClientOrders />} />
+                <Route path="invoices" element={<ClientInvoices />} />
+                <Route path="services" element={<ClientServices />} />
+                <Route path="checkout" element={<ClientCheckout />} />
+                <Route path="projects" element={<ClientProjects />} />
+                <Route path="team" element={<ClientTeam />} />
+                <Route path="support" element={<ClientSupport />} />
+                <Route path="analytics" element={<ClientAnalytics />} />
+                <Route path="settings" element={<ClientSettings />} />
+                <Route path="demo" element={<ClientDemo />} />
               </Route>
             </Route>
 

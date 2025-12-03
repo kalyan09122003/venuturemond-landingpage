@@ -1,0 +1,26 @@
+[
+    {
+        "id": "user-001",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "role": "admin",
+        "status": "active",
+        "avatar": "https://github.com/shadcn.png"
+    },
+    {
+        "id": "user-002",
+        "name": "Jane Smith",
+        "email": "jane@example.com",
+        "role": "editor",
+        "status": "active",
+        "avatar": null
+    },
+    {
+        "id": "user-003",
+        "name": "Mike Johnson",
+        "email": "mike@example.com",
+        "role": "viewer",
+        "status": "invited",
+        "avatar": null
+    }
+]

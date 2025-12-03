@@ -1,0 +1,72 @@
+[
+    {
+        "id": "ORD-2024-001",
+        "service": "Enterprise Cloud Setup",
+        "status": "active",
+        "amount": 4999.00,
+        "date": "2024-11-15",
+        "items": [
+            {
+                "name": "Cloud Infrastructure Setup",
+                "price": 4999.00
+            }
+        ],
+        "invoiceId": "INV-2024-001"
+    },
+    {
+        "id": "ORD-2024-002",
+        "service": "Monthly Maintenance",
+        "status": "pending",
+        "amount": 499.00,
+        "date": "2024-12-01",
+        "items": [
+            {
+                "name": "Standard Maintenance Plan",
+                "price": 499.00
+            }
+        ],
+        "invoiceId": "INV-2024-002"
+    },
+    {
+        "id": "ORD-2024-003",
+        "service": "Custom Development",
+        "status": "provisioning",
+        "amount": 2500.00,
+        "date": "2024-12-02",
+        "items": [
+            {
+                "name": "Feature Implementation",
+                "price": 2500.00
+            }
+        ],
+        "invoiceId": null
+    },
+    {
+        "id": "ORD-2024-004",
+        "service": "Consultation",
+        "status": "cancelled",
+        "amount": 200.00,
+        "date": "2024-10-20",
+        "items": [
+            {
+                "name": "1 Hour Consultation",
+                "price": 200.00
+            }
+        ],
+        "invoiceId": null
+    },
+    {
+        "id": "ORD-2024-005",
+        "service": "SEO Audit",
+        "status": "paid",
+        "amount": 750.00,
+        "date": "2024-11-01",
+        "items": [
+            {
+                "name": "Comprehensive SEO Audit",
+                "price": 750.00
+            }
+        ],
+        "invoiceId": "INV-2024-003"
+    }
+]

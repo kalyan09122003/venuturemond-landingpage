@@ -1,0 +1,29 @@
+[
+    {
+        "id": "INV-2024-001",
+        "orderId": "ORD-2024-001",
+        "amount": 4999.00,
+        "status": "paid",
+        "date": "2024-11-15",
+        "dueDate": "2024-11-29",
+        "pdfUrl": "#"
+    },
+    {
+        "id": "INV-2024-002",
+        "orderId": "ORD-2024-002",
+        "amount": 499.00,
+        "status": "pending",
+        "date": "2024-12-01",
+        "dueDate": "2024-12-15",
+        "pdfUrl": "#"
+    },
+    {
+        "id": "INV-2024-003",
+        "orderId": "ORD-2024-005",
+        "amount": 750.00,
+        "status": "paid",
+        "date": "2024-11-01",
+        "dueDate": "2024-11-15",
+        "pdfUrl": "#"
+    }
+]

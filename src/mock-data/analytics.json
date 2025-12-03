@@ -1,0 +1,58 @@
+{
+    "revenue": [
+        {
+            "month": "Jan",
+            "amount": 2000
+        },
+        {
+            "month": "Feb",
+            "amount": 4500
+        },
+        {
+            "month": "Mar",
+            "amount": 3200
+        },
+        {
+            "month": "Apr",
+            "amount": 5000
+        },
+        {
+            "month": "May",
+            "amount": 5500
+        },
+        {
+            "month": "Jun",
+            "amount": 6000
+        },
+        {
+            "month": "Jul",
+            "amount": 5800
+        },
+        {
+            "month": "Aug",
+            "amount": 7000
+        },
+        {
+            "month": "Sep",
+            "amount": 7500
+        },
+        {
+            "month": "Oct",
+            "amount": 8000
+        },
+        {
+            "month": "Nov",
+            "amount": 8500
+        },
+        {
+            "month": "Dec",
+            "amount": 9000
+        }
+    ],
+    "stats": {
+        "totalRevenue": 68000,
+        "activeUsers": 1250,
+        "newSignups": 45,
+        "churnRate": 2.1
+    }
+}

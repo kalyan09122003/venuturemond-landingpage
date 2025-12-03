@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { TopBar } from "./TopBar";
 import { MobileNav } from "./MobileNav";
+import { MobileQuickActions } from "./MobileQuickActions";
 import {
   Sheet,
   SheetContent,
@@ -109,6 +110,7 @@ export function DashboardLayout() {
 
       {/* Mobile bottom nav */}
       <MobileNav />
+      <MobileQuickActions />
     </div>
   );
 }
