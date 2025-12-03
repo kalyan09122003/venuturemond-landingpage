@@ -5,8 +5,8 @@ export function FooterLinks() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-secondary/20 border-t border-border/40 pt-16 pb-8">
-            <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-8 mb-12">
+        <footer className="bg-secondary/20 border-t border-border/40 pt-12 md:pt-16 pb-8">
+            <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <div className="col-span-1 md:col-span-1">
                     <div className="flex items-center gap-2 mb-4">
                         <img src="/logo.png" alt="VentureMond Logo" className="h-8 w-auto" />
