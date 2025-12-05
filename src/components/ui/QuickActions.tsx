@@ -3,14 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Plus, ShoppingBag, UserPlus, Ticket } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 
-export function QuickActions() {
+interface QuickActionsProps {
+    onAction: (action: 'create-project' | 'invite-team' | 'raise-ticket') => void;
+}
+
+export function QuickActions({ onAction }: QuickActionsProps) {
     const navigate = useNavigate();
 
     const actions = [
         {
             label: "New Project",
             icon: Plus,
-            onClick: () => navigate('/client/projects'), // Ideally opens a modal or specific 'new' route
+            onClick: () => onAction('create-project'),
             variant: "default" as const
         },
         {
@@ -22,13 +26,13 @@ export function QuickActions() {
         {
             label: "Invite Team",
             icon: UserPlus,
-            onClick: () => navigate('/client/team'), // Ideally opens invite modal
+            onClick: () => onAction('invite-team'),
             variant: "outline" as const
         },
         {
             label: "Raise Ticket",
             icon: Ticket,
-            onClick: () => navigate('/client/support'), // Ideally opens new ticket modal
+            onClick: () => onAction('raise-ticket'),
             variant: "outline" as const
         }
     ];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DollarSign, CreditCard, Zap, AlertCircle, CheckCircle2 } from "lucide-react";
+import { DollarSign, CreditCard, Zap, AlertCircle, CheckCircle2, Briefcase, CheckSquare, Headset } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 
 const iconMap: any = {
@@ -8,7 +8,10 @@ const iconMap: any = {
     CreditCard,
     Zap,
     AlertCircle,
-    CheckCircle2
+    CheckCircle2,
+    Briefcase,
+    CheckSquare,
+    Headset
 };
 
 interface KpiCardProps {
@@ -16,8 +19,9 @@ interface KpiCardProps {
         id: string;
         label: string;
         value: React.ReactNode;
-        delta: string | null;
-        deltaType: 'increase' | 'decrease' | 'neutral';
+        delta?: string | null;
+        deltaType?: 'increase' | 'decrease' | 'neutral';
+        subtext?: string;
         icon: string;
         link?: string;
     };
@@ -57,13 +61,19 @@ export function KpiCard({ kpi, onClick }: KpiCardProps) {
             </CardHeader>
             <CardContent>
                 <div className="text-2xl font-bold">{kpi.value}</div>
-                {kpi.delta && (
-                    <p className={`text-xs ${kpi.deltaType === 'increase' ? 'text-green-600' :
-                        kpi.deltaType === 'decrease' ? 'text-red-600' :
-                            'text-muted-foreground'
-                        }`}>
-                        {kpi.delta} from last month
+                {kpi.subtext ? (
+                    <p className="text-xs text-muted-foreground mt-1">
+                        {kpi.subtext}
                     </p>
+                ) : (
+                    kpi.delta && (
+                        <p className={`text-xs ${kpi.deltaType === 'increase' ? 'text-green-600' :
+                            kpi.deltaType === 'decrease' ? 'text-red-600' :
+                                'text-muted-foreground'
+                            }`}>
+                            {kpi.delta} from last month
+                        </p>
+                    )
                 )}
             </CardContent>
         </Card>

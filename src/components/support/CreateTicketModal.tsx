@@ -11,14 +11,21 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 import { Loader2 } from "lucide-react";
 
-interface ProjectCreateModalProps {
+interface CreateTicketModalProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
 }
 
-export function ProjectCreateModal({ open, onOpenChange }: ProjectCreateModalProps) {
+export function CreateTicketModal({ open, onOpenChange }: CreateTicketModalProps) {
     const [loading, setLoading] = React.useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -34,19 +41,33 @@ export function ProjectCreateModal({ open, onOpenChange }: ProjectCreateModalPro
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Create New Project</DialogTitle>
+                    <DialogTitle>Raise a Ticket</DialogTitle>
                     <DialogDescription>
-                        Start a new project with VentureMond.
+                        Describe your issue and we'll get back to you shortly.
                     </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="space-y-2">
-                        <Label htmlFor="name">Project Name</Label>
-                        <Input id="name" placeholder="e.g. Website Redesign" required />
+                        <Label htmlFor="subject">Subject</Label>
+                        <Input id="subject" placeholder="Brief summary of the issue" required />
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="description">Description</Label>
-                        <Textarea id="description" placeholder="Briefly describe your project goals..." />
+                        <Label htmlFor="category">Category</Label>
+                        <Select>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Select category" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="technical">Technical Issue</SelectItem>
+                                <SelectItem value="billing">Billing</SelectItem>
+                                <SelectItem value="feature">Feature Request</SelectItem>
+                                <SelectItem value="other">Other</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="message">Message</Label>
+                        <Textarea id="message" placeholder="Detailed description..." required className="min-h-[100px]" />
                     </div>
                     <DialogFooter>
                         <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
@@ -54,7 +75,7 @@ export function ProjectCreateModal({ open, onOpenChange }: ProjectCreateModalPro
                         </Button>
                         <Button type="submit" disabled={loading} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            Create Project
+                            Submit Ticket
                         </Button>
                     </DialogFooter>
                 </form>

@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
     Dialog,
     DialogContent,
@@ -7,79 +9,88 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
-import { UserPlus } from "lucide-react";
+import { Loader2, Plus, X } from "lucide-react";
 
 interface InviteModalProps {
-    onInvite: (email: string, role: string) => void;
+    open: boolean;
+    onOpenChange: (open: boolean) => void;
 }
 
-export function InviteModal({ onInvite }: InviteModalProps) {
-    const [open, setOpen] = useState(false);
-    const [email, setEmail] = useState('');
-    const [role, setRole] = useState('viewer');
+export function InviteModal({ open, onOpenChange }: InviteModalProps) {
+    const [loading, setLoading] = React.useState(false);
+    const [emails, setEmails] = React.useState<string[]>(['']);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleAddEmail = () => {
+        setEmails([...emails, '']);
+    };
+
+    const handleRemoveEmail = (index: number) => {
+        const newEmails = [...emails];
+        newEmails.splice(index, 1);
+        setEmails(newEmails);
+    };
+
+    const handleEmailChange = (index: number, value: string) => {
+        const newEmails = [...emails];
+        newEmails[index] = value;
+        setEmails(newEmails);
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        onInvite(email, role);
-        setOpen(false);
-        setEmail('');
-        setRole('viewer');
+        setLoading(true);
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setLoading(false);
+        onOpenChange(false);
     };
 
     return (
-        <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild>
-                <Button className="gap-2">
-                    <UserPlus className="h-4 w-4" /> Invite Member
-                </Button>
-            </DialogTrigger>
+        <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="sm:max-w-[425px]">
-                <form onSubmit={handleSubmit}>
-                    <DialogHeader>
-                        <DialogTitle>Invite Team Member</DialogTitle>
-                        <DialogDescription>
-                            Invite a new user to your team. They will receive an email to join.
-                        </DialogDescription>
-                    </DialogHeader>
-                    <div className="grid gap-4 py-4">
-                        <div className="grid gap-2">
-                            <Label htmlFor="email">Email</Label>
-                            <Input
-                                id="email"
-                                type="email"
-                                placeholder="colleague@example.com"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="grid gap-2">
-                            <Label htmlFor="role">Role</Label>
-                            <Select value={role} onValueChange={setRole}>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select a role" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="admin">Admin</SelectItem>
-                                    <SelectItem value="editor">Editor</SelectItem>
-                                    <SelectItem value="viewer">Viewer</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
+                <DialogHeader>
+                    <DialogTitle>Invite Team Members</DialogTitle>
+                    <DialogDescription>
+                        Invite your team to collaborate on VentureMond.
+                    </DialogDescription>
+                </DialogHeader>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="space-y-3">
+                        {emails.map((email, index) => (
+                            <div key={index} className="flex gap-2">
+                                <div className="grid w-full items-center gap-1.5">
+                                    <Label htmlFor={`email-${index}`} className="sr-only">Email</Label>
+                                    <Input
+                                        type="email"
+                                        id={`email-${index}`}
+                                        placeholder="colleague@company.com"
+                                        value={email}
+                                        onChange={(e) => handleEmailChange(index, e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                {emails.length > 1 && (
+                                    <Button type="button" variant="ghost" size="icon" onClick={() => handleRemoveEmail(index)}>
+                                        <X className="h-4 w-4" />
+                                    </Button>
+                                )}
+                            </div>
+                        ))}
                     </div>
+
+                    <Button type="button" variant="outline" size="sm" className="w-full border-dashed" onClick={handleAddEmail}>
+                        <Plus className="mr-2 h-4 w-4" /> Add another
+                    </Button>
+
                     <DialogFooter>
-                        <Button type="submit">Send Invitation</Button>
+                        <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
+                            Cancel
+                        </Button>
+                        <Button type="submit" disabled={loading} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                            Send Invites
+                        </Button>
                     </DialogFooter>
                 </form>
             </DialogContent>
