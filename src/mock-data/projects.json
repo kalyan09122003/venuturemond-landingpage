@@ -9,21 +9,21 @@
         "dueDate": "2024-04-30",
         "owner": {
             "id": "u1",
-            "name": "Kalyan",
-            "avatar": "/avatars/kalyan.jpg"
+            "name": "jhon",
+            "avatar": "/avatars/jhon.jpg"
         },
         "team": [
             {
                 "id": "u1",
-                "name": "Kalyan",
+                "name": "jhon",
                 "role": "Owner",
-                "avatar": "/avatars/kalyan.jpg"
+                "avatar": "/avatars/jhon.jpg"
             },
             {
                 "id": "u2",
-                "name": "Sai",
+                "name": "ajay",
                 "role": "Editor",
-                "avatar": "/avatars/sai.jpg"
+                "avatar": "/avatars/ajay.jpg"
             }
         ],
         "budget": {
@@ -77,7 +77,7 @@
                 "url": "#",
                 "size": "15MB",
                 "type": "design",
-                "uploadedBy": "Kalyan",
+                "uploadedBy": "jhon",
                 "uploadedAt": "2024-02-05",
                 "version": 2
             }
@@ -117,7 +117,7 @@
             {
                 "id": "a1",
                 "type": "task_created",
-                "text": "Kalyan created task 'Design Homepage'",
+                "text": "jhon created task 'Design Homepage'",
                 "timestamp": "2024-01-16T09:00:00"
             }
         ]
@@ -132,15 +132,15 @@
         "dueDate": "2024-06-30",
         "owner": {
             "id": "u2",
-            "name": "Sai",
-            "avatar": "/avatars/sai.jpg"
+            "name": "ajay",
+            "avatar": "/avatars/ajay.jpg"
         },
         "team": [
             {
                 "id": "u2",
-                "name": "Sai",
+                "name": "ajay",
                 "role": "Owner",
-                "avatar": "/avatars/sai.jpg"
+                "avatar": "/avatars/ajay.jpg"
             }
         ],
         "budget": {
@@ -177,15 +177,15 @@
         "dueDate": "2023-12-31",
         "owner": {
             "id": "u1",
-            "name": "Kalyan",
-            "avatar": "/avatars/kalyan.jpg"
+            "name": "jhon",
+            "avatar": "/avatars/jhon.jpg"
         },
         "team": [
             {
                 "id": "u1",
-                "name": "Kalyan",
+                "name": "jhon",
                 "role": "Owner",
-                "avatar": "/avatars/kalyan.jpg"
+                "avatar": "/avatars/jhon.jpg"
             }
         ],
         "budget": {

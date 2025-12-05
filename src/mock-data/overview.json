@@ -1,36 +1,49 @@
 {
     "kpis": [
         {
-            "id": "active-projects",
-            "label": "Active Projects",
-            "value": "3",
-            "subtext": "Projects in delivery",
-            "icon": "Briefcase",
-            "link": "/client/projects"
-        },
-        {
-            "id": "pending-actions",
-            "label": "Pending Actions",
-            "value": "3",
-            "subtext": "Needs your review",
-            "icon": "CheckSquare",
-            "link": "drawer:pending-actions"
-        },
-        {
-            "id": "open-tickets",
-            "label": "Open Tickets",
-            "value": "1",
-            "subtext": "In progress with support",
-            "icon": "Headset",
-            "link": "/client/support?filter=open"
-        },
-        {
             "id": "mrr",
             "label": "Monthly Recurring Revenue",
             "value": "$12,450",
-            "subtext": "Next invoice on July 1st",
-            "icon": "CreditCard",
+            "delta": "+15%",
+            "deltaType": "increase",
+            "icon": "DollarSign",
             "link": "/client/invoices"
+        },
+        {
+            "id": "balance",
+            "label": "Balance Due",
+            "value": "$0.00",
+            "delta": null,
+            "deltaType": "neutral",
+            "icon": "CreditCard",
+            "link": "/client/invoices?filter=due"
+        },
+        {
+            "id": "subscriptions",
+            "label": "Active Subscriptions",
+            "value": "3",
+            "delta": "+1",
+            "deltaType": "increase",
+            "icon": "Zap",
+            "link": "/client/services"
+        },
+        {
+            "id": "pending",
+            "label": "Pending Actions",
+            "value": "3",
+            "delta": null,
+            "deltaType": "neutral",
+            "icon": "AlertCircle",
+            "link": "drawer:pending-actions"
+        },
+        {
+            "id": "onboarding",
+            "label": "Onboarding Progress",
+            "value": "60%",
+            "delta": "+20%",
+            "deltaType": "increase",
+            "icon": "CheckCircle2",
+            "link": "/onboarding"
         }
     ],
     "revenueChart": [
@@ -68,34 +81,29 @@
                 "status": "completed"
             },
             {
+                "id": "tax",
+                "label": "Tax Information",
+                "status": "completed"
+            },
+            {
                 "id": "billing",
-                "label": "Billing & Payment",
-                "status": "completed"
-            },
-            {
-                "id": "service",
-                "label": "Choose Initial Service",
-                "status": "completed"
-            },
-            {
-                "id": "team",
-                "label": "Team & Roles",
+                "label": "Billing Address",
                 "status": "actionable",
-                "actionLabel": "Setup",
-                "link": "/client/team"
-            },
-            {
-                "id": "sso",
-                "label": "SSO / Password Policy",
-                "status": "pending",
-                "actionLabel": "Configure",
+                "actionLabel": "Complete",
                 "link": "/client/settings"
             },
             {
-                "id": "terms",
-                "label": "Accept T&Cs",
+                "id": "team",
+                "label": "Team Setup",
                 "status": "pending",
-                "actionLabel": "Review",
+                "actionLabel": "Start",
+                "link": "/client/team"
+            },
+            {
+                "id": "payment",
+                "label": "Payment Method",
+                "status": "pending",
+                "actionLabel": "Add",
                 "link": "/client/settings"
             }
         ]

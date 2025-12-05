@@ -21,23 +21,17 @@ import {
   Settings,
   LogOut,
   X,
-  FolderKanban,
-  Package,
-  PieChart,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
   { icon: LayoutDashboard, label: "Overview", path: "/dashboard" },
-  { icon: FolderKanban, label: "Projects", path: "/client/projects" },
-  { icon: Server, label: "Services", path: "/client/services" },
-  { icon: ShoppingCart, label: "Cart", path: "/client/cart" },
-  { icon: Package, label: "Orders", path: "/client/orders" },
-  { icon: Receipt, label: "Invoices", path: "/client/invoices" },
-  { icon: Users, label: "Team", path: "/client/team" },
-  { icon: PieChart, label: "Analytics", path: "/client/analytics" },
-  { icon: HeadphonesIcon, label: "Support", path: "/client/support" },
-  { icon: Settings, label: "Settings", path: "/client/settings" },
+  { icon: ShoppingCart, label: "Orders", path: "/dashboard/orders" },
+  { icon: Receipt, label: "Invoices", path: "/dashboard/invoices" },
+  { icon: Server, label: "Services", path: "/dashboard/services" },
+  { icon: Users, label: "Team", path: "/dashboard/team" },
+  { icon: HeadphonesIcon, label: "Support", path: "/dashboard/support" },
+  { icon: Settings, label: "Settings", path: "/dashboard/settings" },
 ];
 
 export function DashboardLayout() {
