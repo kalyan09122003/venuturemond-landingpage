@@ -1,23 +1,33 @@
-import { Bell, Search, User, Menu } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Badge } from "@/components/ui/badge";
 import { NotificationsDropdown } from "@/components/ui/NotificationsDropdown";
+import { UserDropdown } from "@/components/ui/UserDropdown";
+import { mockApi } from "@/lib/mockApi";
+import { useEffect, useState } from "react";
 
 interface TopBarProps {
   onMenuClick: () => void;
 }
 
 export function TopBar({ onMenuClick }: TopBarProps) {
+  const [notifications, setNotifications] = useState<any[]>([]);
+
+  useEffect(() => {
+    loadNotifications();
+  }, []);
+
+  const loadNotifications = async () => {
+    const data = await mockApi.getOverviewData();
+    setNotifications(data.notifications || []);
+  };
+
+  const handleMarkRead = async (id: string) => {
+    const updated = await mockApi.markNotificationRead(id);
+    setNotifications(updated);
+  };
+
   return (
     <header className="sticky top-0 z-40 h-16 glass-strong border-b border-border/30">
       <div className="flex items-center justify-between h-full px-4 md:px-6">
@@ -48,30 +58,10 @@ export function TopBar({ onMenuClick }: TopBarProps) {
           <ThemeToggle />
 
           {/* Notifications */}
-          <NotificationsDropdown />
+          <NotificationsDropdown notifications={notifications} onMarkRead={handleMarkRead} />
 
           {/* User menu */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="gap-2">
-                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                  <User size={16} className="text-primary" />
-                </div>
-                <span className="hidden md:inline text-sm">John Doe</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 glass-strong">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Billing</DropdownMenuItem>
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-destructive">
-                Log out
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <UserDropdown />
         </div>
       </div>
     </header>

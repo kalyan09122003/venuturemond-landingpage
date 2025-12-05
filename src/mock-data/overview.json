@@ -1,0 +1,216 @@
+{
+    "kpis": [
+        {
+            "id": "mrr",
+            "label": "Monthly Recurring Revenue",
+            "value": "$12,450",
+            "delta": "+15%",
+            "deltaType": "increase",
+            "icon": "DollarSign",
+            "link": "/client/invoices"
+        },
+        {
+            "id": "balance",
+            "label": "Balance Due",
+            "value": "$0.00",
+            "delta": null,
+            "deltaType": "neutral",
+            "icon": "CreditCard",
+            "link": "/client/invoices?filter=due"
+        },
+        {
+            "id": "subscriptions",
+            "label": "Active Subscriptions",
+            "value": "3",
+            "delta": "+1",
+            "deltaType": "increase",
+            "icon": "Zap",
+            "link": "/client/services"
+        },
+        {
+            "id": "pending",
+            "label": "Pending Actions",
+            "value": "3",
+            "delta": null,
+            "deltaType": "neutral",
+            "icon": "AlertCircle",
+            "link": "drawer:pending-actions"
+        },
+        {
+            "id": "onboarding",
+            "label": "Onboarding Progress",
+            "value": "60%",
+            "delta": "+20%",
+            "deltaType": "increase",
+            "icon": "CheckCircle2",
+            "link": "/onboarding"
+        }
+    ],
+    "revenueChart": [
+        {
+            "month": "Jan",
+            "revenue": 4000
+        },
+        {
+            "month": "Feb",
+            "revenue": 5500
+        },
+        {
+            "month": "Mar",
+            "revenue": 4800
+        },
+        {
+            "month": "Apr",
+            "revenue": 7000
+        },
+        {
+            "month": "May",
+            "revenue": 9200
+        },
+        {
+            "month": "Jun",
+            "revenue": 12450
+        }
+    ],
+    "onboarding": {
+        "progress": 60,
+        "steps": [
+            {
+                "id": "company",
+                "label": "Company Details",
+                "status": "completed"
+            },
+            {
+                "id": "tax",
+                "label": "Tax Information",
+                "status": "completed"
+            },
+            {
+                "id": "billing",
+                "label": "Billing Address",
+                "status": "actionable",
+                "actionLabel": "Complete",
+                "link": "/client/settings"
+            },
+            {
+                "id": "team",
+                "label": "Team Setup",
+                "status": "pending",
+                "actionLabel": "Start",
+                "link": "/client/team"
+            },
+            {
+                "id": "payment",
+                "label": "Payment Method",
+                "status": "pending",
+                "actionLabel": "Add",
+                "link": "/client/settings"
+            }
+        ]
+    },
+    "recentOrders": [
+        {
+            "id": "ORD-2024-001",
+            "title": "MVP Development",
+            "date": "2024-05-15",
+            "status": "Active",
+            "amount": "$4,999"
+        },
+        {
+            "id": "ORD-2024-002",
+            "title": "Workspace SaaS",
+            "date": "2024-06-01",
+            "status": "Provisioning",
+            "amount": "$299"
+        },
+        {
+            "id": "ORD-2024-003",
+            "title": "Growth Plan",
+            "date": "2024-06-10",
+            "status": "Pending",
+            "amount": "$1,500"
+        }
+    ],
+    "activity": [
+        {
+            "id": "act-1",
+            "type": "file",
+            "text": "New contract uploaded for MVP Development",
+            "timestamp": "2 hours ago",
+            "link": "/client/projects"
+        },
+        {
+            "id": "act-2",
+            "type": "order",
+            "text": "Order #ORD-2024-002 status changed to Provisioning",
+            "timestamp": "5 hours ago",
+            "link": "/client/orders/ORD-2024-002"
+        },
+        {
+            "id": "act-3",
+            "type": "invoice",
+            "text": "Invoice #INV-2024-001 paid successfully",
+            "timestamp": "1 day ago",
+            "link": "/client/invoices"
+        },
+        {
+            "id": "act-4",
+            "type": "team",
+            "text": "Sarah Johnson joined the team",
+            "timestamp": "2 days ago",
+            "link": "/client/team"
+        }
+    ],
+    "notifications": [
+        {
+            "id": "notif-1",
+            "title": "Order Confirmed",
+            "message": "Your order #ORD-2024-003 has been confirmed.",
+            "read": false,
+            "timestamp": "10 mins ago",
+            "link": "/client/orders/ORD-2024-003"
+        },
+        {
+            "id": "notif-2",
+            "title": "New Message",
+            "message": "Support replied to ticket #TKT-992",
+            "read": false,
+            "timestamp": "1 hour ago",
+            "link": "/client/support"
+        },
+        {
+            "id": "notif-3",
+            "title": "System Update",
+            "message": "Scheduled maintenance on June 20th.",
+            "read": true,
+            "timestamp": "2 days ago",
+            "link": "#"
+        }
+    ],
+    "pendingActions": [
+        {
+            "id": "pa-1",
+            "title": "Approve Design Mockups",
+            "description": "Review and approve the initial design mockups for MVP Development.",
+            "type": "approval",
+            "dueDate": "Today",
+            "link": "/client/projects"
+        },
+        {
+            "id": "pa-2",
+            "title": "Invoice #INV-2024-002 Overdue",
+            "description": "Payment of $1,500 is overdue by 2 days.",
+            "type": "payment",
+            "dueDate": "Overdue",
+            "link": "/client/invoices"
+        },
+        {
+            "id": "pa-3",
+            "title": "Complete Profile",
+            "description": "Add your company logo and tax ID.",
+            "type": "task",
+            "dueDate": "Tomorrow",
+            "link": "/client/settings"
+        }
+    ]
+}

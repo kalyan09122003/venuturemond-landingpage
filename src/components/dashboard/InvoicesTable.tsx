@@ -194,7 +194,7 @@ export function InvoicesTable({ invoices, loading }: InvoicesTableProps) {
                   <p className="font-medium">{new Date(selectedInvoice.dueDate).toLocaleDateString()}</p>
                 </div>
               </div>
-              
+
               <div className="border-t border-border pt-4 space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal</span>

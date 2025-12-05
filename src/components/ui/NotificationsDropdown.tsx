@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -8,59 +7,98 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Bell } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Bell, Check, X } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { useNavigate } from 'react-router-dom';
 
 interface Notification {
     id: string;
     title: string;
     message: string;
-    time: string;
     read: boolean;
+    timestamp: string;
     link?: string;
 }
 
-const mockNotifications: Notification[] = [
-    { id: '1', title: 'Order Update', message: 'Your order #ORD-2024-001 is now active.', time: '2 mins ago', read: false, link: '/client/orders' },
-    { id: '2', title: 'New Invoice', message: 'Invoice #INV-2024-002 is available.', time: '1 hour ago', read: false, link: '/client/invoices' },
-    { id: '3', title: 'Ticket Resolved', message: 'Support ticket #TKT-1002 has been resolved.', time: '1 day ago', read: true, link: '/client/support' },
-];
+interface NotificationsDropdownProps {
+    notifications: Notification[];
+    onMarkRead: (id: string) => void;
+}
 
-export function NotificationsDropdown() {
-    const unreadCount = mockNotifications.filter(n => !n.read).length;
+export function NotificationsDropdown({ notifications = [], onMarkRead = () => { } }: Partial<NotificationsDropdownProps>) {
+    const navigate = useNavigate();
+    const safeNotifications = notifications || [];
+    const unreadCount = safeNotifications.filter(n => !n.read).length;
+
+    const handleItemClick = (notification: Notification) => {
+        if (!notification.read) {
+            onMarkRead(notification.id);
+        }
+        if (notification.link) {
+            navigate(notification.link);
+        }
+    };
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="relative">
+                <Button variant="ghost" size="icon" className="relative" aria-label="Notifications">
                     <Bell className="h-5 w-5" />
                     {unreadCount > 0 && (
-                        <Badge className="absolute -top-1 -right-1 h-4 w-4 flex items-center justify-center p-0 rounded-full bg-red-500">
-                            {unreadCount}
-                        </Badge>
+                        <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-red-500 rounded-full animate-pulse" />
                     )}
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-80">
-                <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+                <DropdownMenuLabel className="flex items-center justify-between">
+                    <span>Notifications</span>
+                    {unreadCount > 0 && (
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-auto p-0 text-xs text-muted-foreground hover:text-primary"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onMarkRead('all');
+                            }}
+                        >
+                            Mark all read
+                        </Button>
+                    )}
+                </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <div className="max-h-[300px] overflow-y-auto">
-                    {mockNotifications.map((notification) => (
-                        <DropdownMenuItem key={notification.id} className="cursor-pointer flex flex-col items-start gap-1 p-3">
-                            <div className="flex justify-between w-full">
-                                <span className={`font-medium ${!notification.read ? 'text-primary' : ''}`}>
-                                    {notification.title}
-                                </span>
-                                <span className="text-xs text-muted-foreground">{notification.time}</span>
-                            </div>
-                            <p className="text-sm text-muted-foreground line-clamp-2">{notification.message}</p>
-                        </DropdownMenuItem>
-                    ))}
-                </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="justify-center text-primary cursor-pointer">
-                    View all notifications
-                </DropdownMenuItem>
+                <ScrollArea className="h-[300px]">
+                    {safeNotifications.length === 0 ? (
+                        <div className="flex flex-col items-center justify-center h-40 text-muted-foreground">
+                            <Bell className="h-8 w-8 mb-2 opacity-20" />
+                            <p className="text-sm">No notifications</p>
+                        </div>
+                    ) : (
+                        <div className="space-y-1 p-1">
+                            {safeNotifications.map((notification) => (
+                                <DropdownMenuItem
+                                    key={notification.id}
+                                    className={`flex flex-col items-start gap-1 p-3 cursor-pointer ${!notification.read ? 'bg-muted/50' : ''}`}
+                                    onClick={() => handleItemClick(notification)}
+                                >
+                                    <div className="flex w-full justify-between items-start">
+                                        <span className={`text-sm font-medium ${!notification.read ? 'text-foreground' : 'text-muted-foreground'}`}>
+                                            {notification.title}
+                                        </span>
+                                        {!notification.read && <span className="h-2 w-2 rounded-full bg-blue-500 mt-1.5" />}
+                                    </div>
+                                    <p className="text-xs text-muted-foreground line-clamp-2">
+                                        {notification.message}
+                                    </p>
+                                    <span className="text-[10px] text-muted-foreground/70 mt-1">
+                                        {notification.timestamp}
+                                    </span>
+                                </DropdownMenuItem>
+                            ))}
+                        </div>
+                    )}
+                </ScrollArea>
             </DropdownMenuContent>
         </DropdownMenu>
     );

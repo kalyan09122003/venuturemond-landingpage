@@ -26,10 +26,15 @@ import Support from "./pages/dashboard/Support";
 import Settings from "./pages/dashboard/Settings";
 
 // Client Pages (New)
+import ClientOverview from "./pages/client/Overview";
 import ClientOrders from "./pages/client/Orders";
 import ClientInvoices from "./pages/client/Invoices";
 import ClientServices from "./pages/client/Services";
 import ClientCheckout from "./pages/client/Checkout";
+import ClientCart from "./pages/client/Cart";
+import ClientContract from "./pages/client/Contract";
+import ClientOrderConfirmation from "./pages/client/OrderConfirmation";
+import ClientDemoCart from "./pages/client/demo/Cart";
 import ClientProjects from "./pages/client/Projects";
 import ClientTeam from "./pages/client/Team";
 import ClientSupport from "./pages/client/Support";
@@ -38,6 +43,11 @@ import ClientSettings from "./pages/client/Settings";
 import ClientDemo from "./pages/client/Demo";
 
 const queryClient = new QueryClient();
+
+const Logout = () => {
+  localStorage.removeItem("isAuthenticated");
+  return <Navigate to="/login" replace />;
+};
 
 // Simple mock protection
 const ProtectedRoute = () => {
@@ -67,10 +77,7 @@ const App = () => (
             <Route path="/forgot-password" element={<ForgotPassword />} />
 
             {/* Logout Route: Clears auth and redirects */}
-            <Route path="/logout" element={() => {
-              localStorage.removeItem("isAuthenticated");
-              return <Navigate to="/login" replace />;
-            }} />
+            <Route path="/logout" element={<Logout />} />
 
             {/* Protected Routes */}
             <Route element={<ProtectedRoute />}>
@@ -88,11 +95,15 @@ const App = () => (
 
               {/* Client Routes (New) */}
               <Route path="/client" element={<DashboardLayout />}>
-                <Route index element={<Navigate to="/client/orders" replace />} />
+                <Route index element={<ClientOverview />} />
+                <Route path="cart" element={<ClientCart />} />
+                <Route path="checkout" element={<ClientCheckout />} />
+                <Route path="contract" element={<ClientContract />} />
+                <Route path="order-confirmation" element={<ClientOrderConfirmation />} />
+                <Route path="demo/cart" element={<ClientDemoCart />} />
                 <Route path="orders" element={<ClientOrders />} />
                 <Route path="invoices" element={<ClientInvoices />} />
                 <Route path="services" element={<ClientServices />} />
-                <Route path="checkout" element={<ClientCheckout />} />
                 <Route path="projects" element={<ClientProjects />} />
                 <Route path="team" element={<ClientTeam />} />
                 <Route path="support" element={<ClientSupport />} />

@@ -1,0 +1,50 @@
+{
+    "items": [
+        {
+            "id": "svc-mvp-01",
+            "title": "MVP Development",
+            "subtitle": "Full-stack build",
+            "price_per_unit": 4999,
+            "billing_interval": "month",
+            "quantity": 1,
+            "seats": 3,
+            "add_ons": [
+                {
+                    "id": "priority-support",
+                    "title": "Priority Support",
+                    "price": 199,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "id": "svc-workspace-01",
+            "title": "Workspace SaaS",
+            "subtitle": "Team collaboration suite",
+            "price_per_unit": 299,
+            "billing_interval": "month",
+            "quantity": 2,
+            "seats": 5,
+            "add_ons": [
+                {
+                    "id": "extra-storage",
+                    "title": "1TB Extra Storage",
+                    "price": 50,
+                    "enabled": false
+                }
+            ]
+        },
+        {
+            "id": "svc-growth-01",
+            "title": "Growth & GTM Plan",
+            "subtitle": "Marketing and sales strategy",
+            "price_per_unit": 1500,
+            "billing_interval": "month",
+            "quantity": 1,
+            "seats": 1,
+            "add_ons": []
+        }
+    ],
+    "coupon": null,
+    "tax_percent": 18
+}

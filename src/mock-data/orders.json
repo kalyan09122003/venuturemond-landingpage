@@ -5,6 +5,7 @@
         "status": "active",
         "amount": 4999.00,
         "date": "2024-11-15",
+        "contractSigned": true,
         "items": [
             {
                 "name": "Cloud Infrastructure Setup",
@@ -19,6 +20,7 @@
         "status": "pending",
         "amount": 499.00,
         "date": "2024-12-01",
+        "contractSigned": true,
         "items": [
             {
                 "name": "Standard Maintenance Plan",
@@ -33,6 +35,7 @@
         "status": "provisioning",
         "amount": 2500.00,
         "date": "2024-12-02",
+        "contractSigned": true,
         "items": [
             {
                 "name": "Feature Implementation",
@@ -47,6 +50,7 @@
         "status": "cancelled",
         "amount": 200.00,
         "date": "2024-10-20",
+        "contractSigned": true,
         "items": [
             {
                 "name": "1 Hour Consultation",
@@ -61,6 +65,7 @@
         "status": "paid",
         "amount": 750.00,
         "date": "2024-11-01",
+        "contractSigned": true,
         "items": [
             {
                 "name": "Comprehensive SEO Audit",
