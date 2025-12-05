@@ -15,7 +15,7 @@ interface KpiCardProps {
     kpi: {
         id: string;
         label: string;
-        value: string;
+        value: React.ReactNode;
         delta: string | null;
         deltaType: 'increase' | 'decrease' | 'neutral';
         icon: string;
@@ -59,8 +59,8 @@ export function KpiCard({ kpi, onClick }: KpiCardProps) {
                 <div className="text-2xl font-bold">{kpi.value}</div>
                 {kpi.delta && (
                     <p className={`text-xs ${kpi.deltaType === 'increase' ? 'text-green-600' :
-                            kpi.deltaType === 'decrease' ? 'text-red-600' :
-                                'text-muted-foreground'
+                        kpi.deltaType === 'decrease' ? 'text-red-600' :
+                            'text-muted-foreground'
                         }`}>
                         {kpi.delta} from last month
                     </p>

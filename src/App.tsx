@@ -35,7 +35,39 @@ import ClientCart from "./pages/client/Cart";
 import ClientContract from "./pages/client/Contract";
 import ClientOrderConfirmation from "./pages/client/OrderConfirmation";
 import ClientDemoCart from "./pages/client/demo/Cart";
-import ClientProjects from "./pages/client/Projects";
+import ClientProjects from "./pages/client/ProjectList";
+import { ProjectShell } from "./pages/client/project/ProjectShell";
+import ProjectTasks from "./pages/client/project/ProjectTasks";
+import ProjectFiles from "./pages/client/project/ProjectFiles";
+import ProjectDeliverables from "./pages/client/project/ProjectDeliverables";
+import ProjectRoadmap from "./pages/client/project/ProjectRoadmap";
+import ProjectMeetings from "./pages/client/project/ProjectMeetings";
+import ProjectBudget from "./pages/client/project/ProjectBudget";
+import ProjectTeam from "./pages/client/project/ProjectTeam";
+import { mockProjectApi } from "./lib/mockProjectApi";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+// Wrapper to fetch project data for the shell
+const ClientProjectDetail = () => {
+  const { projectId } = useParams();
+  const [project, setProject] = useState<any>(null);
+
+  useEffect(() => {
+    if (projectId) {
+      mockProjectApi.getProject(projectId).then(setProject);
+    }
+  }, [projectId]);
+
+  if (!project) return <div>Loading...</div>;
+
+  return (
+    <ProjectShell project={project}>
+      <Outlet />
+    </ProjectShell>
+  );
+};
+
 import ClientTeam from "./pages/client/Team";
 import ClientSupport from "./pages/client/Support";
 import ClientAnalytics from "./pages/client/Analytics";
@@ -105,6 +137,16 @@ const App = () => (
                 <Route path="invoices" element={<ClientInvoices />} />
                 <Route path="services" element={<ClientServices />} />
                 <Route path="projects" element={<ClientProjects />} />
+                <Route path="projects/:projectId" element={<ClientProjectDetail />}>
+                  <Route index element={<Navigate to="tasks" replace />} />
+                  <Route path="tasks" element={<ProjectTasks />} />
+                  <Route path="files" element={<ProjectFiles />} />
+                  <Route path="deliverables" element={<ProjectDeliverables />} />
+                  <Route path="roadmap" element={<ProjectRoadmap />} />
+                  <Route path="meetings" element={<ProjectMeetings />} />
+                  <Route path="budget" element={<ProjectBudget />} />
+                  <Route path="team" element={<ProjectTeam />} />
+                </Route>
                 <Route path="team" element={<ClientTeam />} />
                 <Route path="support" element={<ClientSupport />} />
                 <Route path="analytics" element={<ClientAnalytics />} />

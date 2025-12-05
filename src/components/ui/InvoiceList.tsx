@@ -10,6 +10,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Download, FileText } from "lucide-react";
+import { PriceBadge } from "../services/PriceBadge";
 
 interface Invoice {
     id: string;
@@ -62,7 +63,9 @@ export function InvoiceList({ invoices }: InvoiceListProps) {
                                         {invoice.status}
                                     </Badge>
                                 </TableCell>
-                                <TableCell className="text-right">${invoice.amount.toFixed(2)}</TableCell>
+                                <TableCell className="text-right">
+                                    <PriceBadge amount={invoice.amount} />
+                                </TableCell>
                                 <TableCell className="text-right">
                                     <Button variant="ghost" size="icon" asChild>
                                         <a href={invoice.pdfUrl} target="_blank" rel="noopener noreferrer">

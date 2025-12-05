@@ -10,6 +10,7 @@ import { ActivityFeed } from '@/components/ui/ActivityFeed';
 import { PendingActionsDrawer } from '@/components/ui/PendingActionsDrawer';
 import { Loader2 } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
+import { PriceBadge } from '@/components/services/PriceBadge';
 
 export default function Overview() {
     const [data, setData] = useState<any>(null);
@@ -25,7 +26,20 @@ export default function Overview() {
         setLoading(true);
         try {
             const overviewData = await mockApi.getOverviewData();
-            setData(overviewData);
+
+            const transformedKpis = overviewData.kpis.map((kpi: any) => {
+                if (typeof kpi.value === 'string' && kpi.value.includes('$')) {
+                    // Extract numeric value
+                    const numericValue = parseFloat(kpi.value.replace(/[^0-9.-]+/g, ""));
+                    return {
+                        ...kpi,
+                        value: <PriceBadge amount={numericValue} size="lg" />
+                    };
+                }
+                return kpi;
+            });
+
+            setData({ ...overviewData, kpis: transformedKpis });
         } catch (error) {
             console.error("Failed to load overview data", error);
         } finally {

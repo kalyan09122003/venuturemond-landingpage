@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Loader2, Info } from "lucide-react";
+import { PriceBadge } from "../services/PriceBadge";
 import {
     Tooltip,
     TooltipContent,
@@ -49,15 +50,18 @@ export function CartSummary({ totals, taxPercent, onApplyCoupon, onCheckout }: C
             </CardHeader>
             <CardContent className="space-y-6">
                 <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between text-sm items-center">
                         <span className="text-muted-foreground">Subtotal</span>
-                        <span>${totals.subtotal.toLocaleString()}</span>
+                        <PriceBadge amount={totals.subtotal} />
                     </div>
 
                     {totals.discount > 0 && (
-                        <div className="flex justify-between text-sm text-green-600">
+                        <div className="flex justify-between text-sm text-green-600 items-center">
                             <span>Discount</span>
-                            <span>-${totals.discount.toLocaleString()}</span>
+                            <div className="flex items-center">
+                                <span>-</span>
+                                <PriceBadge amount={totals.discount} className="text-green-600" />
+                            </div>
                         </div>
                     )}
 
@@ -77,14 +81,14 @@ export function CartSummary({ totals, taxPercent, onApplyCoupon, onCheckout }: C
                                 </Tooltip>
                             </TooltipProvider>
                         </span>
-                        <span>${totals.tax.toLocaleString()}</span>
+                        <PriceBadge amount={totals.tax} />
                     </div>
 
                     <Separator className="my-2" />
 
-                    <div className="flex justify-between font-bold text-lg">
+                    <div className="flex justify-between font-bold text-lg items-center">
                         <span>Total</span>
-                        <span>${totals.total.toLocaleString()}</span>
+                        <PriceBadge amount={totals.total} size="lg" />
                     </div>
                 </div>
 

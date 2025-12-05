@@ -5,6 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Trash2, Minus, Plus } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { RemoveItemModal } from "./RemoveItemModal";
+import { PriceBadge } from "../services/PriceBadge";
 
 interface CartItemProps {
     item: any;
@@ -57,8 +58,8 @@ export function CartItem({ item, onUpdate, onRemove }: CartItemProps) {
                                             checked={addon.enabled}
                                             onCheckedChange={() => toggleAddOn(addon.id, addon.enabled)}
                                         />
-                                        <label htmlFor={`addon-${addon.id}`} className="cursor-pointer select-none">
-                                            {addon.title} (+${addon.price})
+                                        <label htmlFor={`addon-${addon.id}`} className="cursor-pointer select-none flex items-center gap-1">
+                                            {addon.title} (+<PriceBadge amount={addon.price} size="sm" orientation="row" />)
                                         </label>
                                     </div>
                                 ))}
@@ -96,9 +97,9 @@ export function CartItem({ item, onUpdate, onRemove }: CartItemProps) {
                             </div>
 
                             <div className="flex items-center justify-between pt-4 border-t">
-                                <span className="font-bold text-lg">
-                                    ${calculateItemTotal().toLocaleString()}
-                                </span>
+                                <div className="font-bold text-lg">
+                                    <PriceBadge amount={calculateItemTotal()} size="lg" />
+                                </div>
                                 <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive/90" onClick={() => setShowRemoveModal(true)}>
                                     <Trash2 className="h-4 w-4" />
                                 </Button>

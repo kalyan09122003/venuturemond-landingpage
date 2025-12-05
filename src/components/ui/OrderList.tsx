@@ -11,6 +11,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Search, Filter } from "lucide-react";
+import { PriceBadge } from "../services/PriceBadge";
 
 interface Order {
     id: string;
@@ -107,7 +108,9 @@ export function OrderList({ orders, onOrderClick }: OrderListProps) {
                                             {order.status}
                                         </Badge>
                                     </TableCell>
-                                    <TableCell className="text-right">${order.amount.toFixed(2)}</TableCell>
+                                    <TableCell className="text-right">
+                                        <PriceBadge amount={order.amount} />
+                                    </TableCell>
                                 </TableRow>
                             ))
                         )}

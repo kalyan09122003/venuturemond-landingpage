@@ -1,76 +1,202 @@
 [
     {
-        "id": "proj-001",
+        "id": "proj-1",
         "name": "Website Redesign",
-        "status": "active",
+        "description": "Complete overhaul of the corporate website with new branding and CMS.",
+        "status": "Active",
         "progress": 65,
-        "startDate": "2024-11-01",
-        "dueDate": "2024-12-31",
+        "startDate": "2024-01-15",
+        "dueDate": "2024-04-30",
+        "owner": {
+            "id": "u1",
+            "name": "Kalyan",
+            "avatar": "/avatars/kalyan.jpg"
+        },
+        "team": [
+            {
+                "id": "u1",
+                "name": "Kalyan",
+                "role": "Owner",
+                "avatar": "/avatars/kalyan.jpg"
+            },
+            {
+                "id": "u2",
+                "name": "Sai",
+                "role": "Editor",
+                "avatar": "/avatars/sai.jpg"
+            }
+        ],
+        "budget": {
+            "total": 15000,
+            "spent": 8500,
+            "currency": "USD"
+        },
         "tasks": [
             {
-                "id": "task-1",
-                "title": "Design Mockups",
-                "status": "done",
-                "assignee": "Alice"
+                "id": "t1",
+                "title": "Design Homepage",
+                "description": "Create high-fidelity mockups for the homepage.",
+                "status": "Done",
+                "priority": "High",
+                "assignees": [
+                    "u1"
+                ],
+                "dueDate": "2024-02-01",
+                "comments": []
             },
             {
-                "id": "task-2",
-                "title": "Frontend Implementation",
-                "status": "in-progress",
-                "assignee": "Bob"
+                "id": "t2",
+                "title": "Implement CMS",
+                "description": "Setup Strapi and configure content types.",
+                "status": "In Progress",
+                "priority": "High",
+                "assignees": [
+                    "u2"
+                ],
+                "dueDate": "2024-03-15",
+                "comments": []
             },
             {
-                "id": "task-3",
-                "title": "Backend API",
-                "status": "todo",
-                "assignee": "Charlie"
+                "id": "t3",
+                "title": "Content Migration",
+                "description": "Migrate blog posts from old site.",
+                "status": "Todo",
+                "priority": "Medium",
+                "assignees": [
+                    "u1",
+                    "u2"
+                ],
+                "dueDate": "2024-04-01",
+                "comments": []
             }
         ],
         "files": [
             {
-                "id": "file-1",
-                "name": "requirements.pdf",
-                "size": "2.5MB",
-                "date": "2024-11-02"
-            },
-            {
-                "id": "file-2",
-                "name": "design_v1.fig",
+                "id": "f1",
+                "name": "Homepage_v2.fig",
+                "url": "#",
                 "size": "15MB",
-                "date": "2024-11-10"
+                "type": "design",
+                "uploadedBy": "Kalyan",
+                "uploadedAt": "2024-02-05",
+                "version": 2
             }
         ],
         "deliverables": [
             {
-                "id": "del-1",
-                "name": "Homepage Design",
-                "status": "approved",
-                "date": "2024-11-15"
+                "id": "d1",
+                "title": "Homepage Design",
+                "status": "Approved",
+                "dueDate": "2024-02-10",
+                "submittedAt": "2024-02-08",
+                "approvedAt": "2024-02-09",
+                "approvedBy": "Client"
             },
             {
-                "id": "del-2",
-                "name": "About Page Design",
-                "status": "pending_approval",
-                "date": "2024-12-01"
+                "id": "d2",
+                "title": "CMS Prototype",
+                "status": "Sent for Review",
+                "dueDate": "2024-03-20",
+                "submittedAt": "2024-03-18"
+            }
+        ],
+        "meetings": [
+            {
+                "id": "m1",
+                "title": "Kickoff Meeting",
+                "date": "2024-01-15T10:00:00",
+                "duration": 60,
+                "attendees": [
+                    "u1",
+                    "u2",
+                    "Client"
+                ]
+            }
+        ],
+        "activity": [
+            {
+                "id": "a1",
+                "type": "task_created",
+                "text": "Kalyan created task 'Design Homepage'",
+                "timestamp": "2024-01-16T09:00:00"
             }
         ]
     },
     {
-        "id": "proj-002",
+        "id": "proj-2",
         "name": "Mobile App MVP",
-        "status": "planning",
-        "progress": 10,
-        "startDate": "2024-12-15",
-        "dueDate": "2025-03-01",
+        "description": "iOS and Android app for customer loyalty program.",
+        "status": "Planning",
+        "progress": 15,
+        "startDate": "2024-03-01",
+        "dueDate": "2024-06-30",
+        "owner": {
+            "id": "u2",
+            "name": "Sai",
+            "avatar": "/avatars/sai.jpg"
+        },
+        "team": [
+            {
+                "id": "u2",
+                "name": "Sai",
+                "role": "Owner",
+                "avatar": "/avatars/sai.jpg"
+            }
+        ],
+        "budget": {
+            "total": 25000,
+            "spent": 1200,
+            "currency": "USD"
+        },
         "tasks": [
             {
-                "id": "task-4",
-                "title": "Requirement Gathering",
-                "status": "in-progress",
-                "assignee": "Alice"
+                "id": "t4",
+                "title": "User Research",
+                "description": "Interview 5 potential users.",
+                "status": "In Progress",
+                "priority": "Medium",
+                "assignees": [
+                    "u2"
+                ],
+                "dueDate": "2024-03-10",
+                "comments": []
             }
         ],
         "files": [],
-        "deliverables": []
+        "deliverables": [],
+        "meetings": [],
+        "activity": []
+    },
+    {
+        "id": "proj-3",
+        "name": "Marketing Campaign",
+        "description": "Q2 Social Media and Email campaign.",
+        "status": "Completed",
+        "progress": 100,
+        "startDate": "2023-10-01",
+        "dueDate": "2023-12-31",
+        "owner": {
+            "id": "u1",
+            "name": "Kalyan",
+            "avatar": "/avatars/kalyan.jpg"
+        },
+        "team": [
+            {
+                "id": "u1",
+                "name": "Kalyan",
+                "role": "Owner",
+                "avatar": "/avatars/kalyan.jpg"
+            }
+        ],
+        "budget": {
+            "total": 5000,
+            "spent": 4800,
+            "currency": "USD"
+        },
+        "tasks": [],
+        "files": [],
+        "deliverables": [],
+        "meetings": [],
+        "activity": []
     }
 ]

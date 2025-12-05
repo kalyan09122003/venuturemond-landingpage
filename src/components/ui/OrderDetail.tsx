@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Download, ArrowLeft, CheckCircle2, Circle, Clock } from "lucide-react";
+import { PriceBadge } from "../services/PriceBadge";
 
 interface OrderItem {
     name: string;
@@ -95,16 +96,16 @@ export function OrderDetail({ order, onBack }: OrderDetailProps) {
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
                             {order.items.map((item, idx) => (
-                                <div key={idx} className="flex justify-between text-sm">
+                                <div key={idx} className="flex justify-between text-sm items-center">
                                     <span>{item.name}</span>
-                                    <span>${item.price.toFixed(2)}</span>
+                                    <PriceBadge amount={item.price} />
                                 </div>
                             ))}
                         </div>
                         <Separator />
-                        <div className="flex justify-between font-bold">
+                        <div className="flex justify-between font-bold items-center">
                             <span>Total</span>
-                            <span>${order.amount.toFixed(2)}</span>
+                            <PriceBadge amount={order.amount} size="lg" />
                         </div>
                     </CardContent>
                 </Card>
